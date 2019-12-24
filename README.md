@@ -73,25 +73,55 @@ b.创建一个用户界面，指引人们在运行之前确保摄像头画面中
 | 1 | 林妈妈的儿子问她吃的水果用英语该怎么读 | 极其重要 | 核心功能 | 分析图像 |
 | 2 | 小明要准备一个英语朗诵比赛，但是他不确定自己读音标不标准 | 重要 | 核心功能 | 口语测评 |
 
-## 产品架构图
-
-
-
-# PART2 原型
-
-## 交互及界面设计
-
-
-
-## 信息设计
-
-
-
-## 原型文档
 
 
 
 # PART3 API产品使用关键AI或机器学习之API的输出入展示
+· 输入
+```
+# encoding:utf-8
+import requests 
+
+# client_id 为官网获取的AK， client_secret 为官网获取的SK
+host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=XtxocZFz4nIKzPyME6QtunyF&client_secret=NyfS6nELlg71kYoDRujgXF7jw5ILZyqe'
+response = requests.get(host)
+if response:
+    print(response.json())
+```
+· 输出
+```
+{'refresh_token': '25.9b57acdc18563c73298b9d80272d2f4b.315360000.1892305426.282335-18081781', 'expires_in': 2592000, 'session_key': '9mzdA5rh5spnaTEx7qFHWhkPxb+P3XEzxkndRYKP+RrEr8NvDKkSCT4x9r9cukFb031H6lIe8a/GgiXnlq7HEtTuUt1x4g==', 'access_token': '24.805ba36f70a4d0e6d743401eb732d35c.2592000.1579537426.282335-18081781', 'scope': 'public vis-classify_dishes vis-classify_car brain_all_scope vis-classify_animal vis-classify_plant brain_object_detect brain_realtime_logo brain_dish_detect brain_car_detect brain_animal_classify brain_plant_classify brain_ingredient brain_advanced_general_classify brain_custom_dish brain_poi_recognize brain_vehicle_detect brain_redwine brain_currency brain_vehicle_damage wise_adapt lebo_resource_base lightservice_public hetu_basic lightcms_map_poi kaidian_kaidian ApsMisTest_Test权限 vis-classify_flower lpq_开放 cop_helloScope ApsMis_fangdi_permission smartapp_snsapi_base iop_autocar oauth_tp_app smartapp_smart_game_openapi oauth_sessionkey smartapp_swanid_verify smartapp_opensource_openapi smartapp_opensource_recapi fake_face_detect_开放Scope vis-ocr_虚拟人物助理 idl-video_虚拟人物助理', 'session_secret': 'ae8de328be480b79cdcab9ac5bfb8eec'}
+```
+
+· 输入
+```
+# encoding:utf-8
+
+import requests
+import base64
+
+
+···
+通用物体和场景识别
+'''
+
+request_url = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general"
+# 二进制方式打开图片文件
+f = open('C:/Users/29552/Desktop/what.jpg', 'rb')
+img = base64.b64encode(f.read())
+
+params = {"image":img}
+access_token = '24.805ba36f70a4d0e6d743401eb732d35c.2592000.1579537426.282335-18081781'
+request_url = request_url + "?access_token=" + access_token
+headers = {'content-type': 'application/x-www-form-urlencoded'}
+response = requests.post(request_url, data=params, headers=headers)
+if response:
+    print (response.json())
+```
+· 输出
+```
+{'log_id': 9095107985145517526, 'result_num': 5, 'result': [{'score': 0.746256, 'root': '非自然图像-书籍封面', 'keyword': '书籍'}, {'score': 0.584855, 'root': '人物-人物特写', 'keyword': '人物特写'}, {'score': 0.426847, 'root': '人物-人物特写', 'keyword': '鬓发'}, {'score': 0.267823, 'root': '人物-人物特写', 'keyword': '美女'}, {'score': 0.100517, 'root': '人物-人物特写', 'keyword': '女人'}]}
+```
 
 ## 使用水平 输入+输出
 1、产品使用到的API展示
