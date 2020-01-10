@@ -95,7 +95,7 @@ b.创建一个用户界面，指引人们在运行之前确保摄像头画面中
 
 
 ## 交互及界面设计
-- [培英产品原型](https://k3j4yj.axshare.com)，若该链接加载过慢，请[点击此处] (http://nfunm001.gitee.io/e.qpp)
+- [培英产品原型](https://k3j4yj.axshare.com)，若该链接加载过慢，请[点击此处](http://nfunm001.gitee.io/e.qpp)
 
 - 百度AI通用物体和场景识别API：识别照片主体内容，返回名称。
 - 有道智云AI文本翻译API：根据返回的名称翻译成英语单词。
